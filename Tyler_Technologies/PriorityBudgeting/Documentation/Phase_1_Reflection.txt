@@ -1,0 +1,122 @@
+Reflection on Phase_1
+=====================================Variables and data types=======================================
+1.) What is a variable, and why does this program use variables 
+instead of writing all the values directly inside 
+Console.WriteLine()?
+
+A veriable is the naming convention of a value, it is used to refrence results
+and other combination without have to retype the values and formulas of c=chunks of
+code over and over again
+
+2.) Why is programName a string, while annualBudget and amountSpent are decimal?
+
+The reason why we used string programName is because we are stating a categorey.
+categoreys and names of locations and objects are usually use words and C# reconizeses
+these letters values as string. The reason decimal amountSpent was refred to using decimals
+is how the system of numbers work when working with money. Money is a decimal based system
+usually in the range of 0.00 this is the reason why we used decimal is because money is usually
+a decimal system.
+
+3.) What does the m mean in 400000m and 310000m? Why is it used for financial calculations?
+
+I had to use google to understand this, it says the m adds the decimal value speciffically the .00
+this makes it so a number becomes a decimal data type for integers
+
+4.) What would happen if you changed amountSpent from 310000m to 350000m? Which output values would 
+change? 
+
+Since we had to change the value of amountSpent that would be considered change then the 
+remaningBudget would also change as well
+
+=====================================Calculations and output========================================
+5.) How does remainingBudget get its value? Does it update automatically if 
+amountSpent changes later?
+
+ramaningBudget get its value from the magic numbers with in annualBudget and amountSpent it grabs
+these variables then subtracts them from Max, annualBudget, then Min, amountSpent, then outputs
+whatever is left over. However since this is not designed as an input, no loops nor any ability to
+update this information in real time this means amountSpent dose not change later.
+
+6.) What does Console.WriteLine() do in this program?
+
+Console means print to termainal screen, WriteLine means I am looking for a string or someting to
+output to the termianl as a string. What this dose is that it allows the code to output information to
+the termianl in relation to what our variables are or the string inside its (), for me I think of this as
+the print() statment in python just pulling similarties to help me further.
+
+7.) What does the $ before a string mean in $"Program: {programName}"?
+The $ is lie an f string in python, this allows me to easily refer to variables
+without having to add , or spaces that would make the output visually awkwared and wired.
+
+8.) What does :N2 mean in {annualBudget:N2}? Why might displaying two decimal places be useful in a
+budgeting application? the N2 is a rounding value that puts the interger into a decimal based system.
+N2 can have greater number like N3, N4 and so on. Usually the number besides the N# is meaning how
+much it is rounding the decimal values, in this case N2 is round at the secound decimal value.
+
+9.) What would happen if amountSpent were greater than annualBudget? 
+Calculate the remaining budget if the amount spent were $450,000.
+
+it would write to the console WARNING: The program is over budget!
+
+========================================Conditional logic===========================================
+10.) What does the if statement check in this program?
+
+The if statement is setting up conditional scenerios, I like to call theses what if scenarios.
+the code is opening with, if I am within budget then that is true I will write this line to the
+console. But I have else which closes the if statment to false then it writes to the console
+over budget.
+============================================AI USED=================================================
+Source Chat GPT
+11.) Why does the program use > instead of >= to check whether the program is over budget?
+
+We use `>` instead of `>=` because we only want to identify when the program has spent more than its
+annual budget. If the amount spent is exactly equal to the budget,
+the program is not over budget yet.
+====================================================================================================
+12.) What is the purpose of the else block?
+
+The else block primarly closes the if statment to a false
+
+13.) What would happen if you removed the entire if/else
+
+Hmm, intresting queshtion. this is what we would have.
+Console.WriteLine("WARNING: The program is over budget!");
+Console.WriteLine("Status: Within budget.");
+as such it will write the Console outputs into the consel and we can see these.
+This can be misleading for the reader that is running the program
+
+=====================================Real-world application=========================================
+14.) Why might a public safety program need a budgeting system?
+
+Public saftey requires fincances to maintian equipment, hire new workers and enforce new policies,
+however spending to much in this department can cause an incresses in taxes, and other political
+reforms that can impact the daily lives of residents
+
+15.) What could happen if a budgeting system incorrectly reports that a program is within budget?
+
+Unintential over spending and investing into public saftey when goverment money needs to o somewhere
+else for example education
+
+16.)What additional information would you want to track for each public program 
+besides its annual budget and amount spent?
+
+Hmm, I think I would like to track where the money is going, like how much of the budget is being
+spent on employess, gear, services, maintance and so on.
+
+17.) What limitations does this program have if a government 
+wants to manage budgets for dozens of departments?
+
+As of right now the limtation I see is easy scalability, adjusting information, adding departments
+and the visual representation to these departments is not best for other professionals, for example
+Data analysts or Quatitive analysts. I need to develop a more readable and scalable system so it
+becomes a more pleasent uesr experiance.
+
+========================================Final reflection============================================
+18.) What is one concept you understand better after completing this phase, 
+and what is one concept you still need to practice?
+
+I belive I understood a great deal of concepts involving phase_1 of this project
+However what I do lack and should probably study more on is queshtion 11 on >, <, >=, <=.
+The reson for that is because I had to use chat GPT to help me understand this better and I follow
+a good rule that when I can answer the queshtion on my own and need I need to reserch it or ask AI
+for help then its probaby a good hint that I need to study it a bit more.

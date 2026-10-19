@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Beacon Laser Kiosk — Prototype</title>
+  <style>
+    :root { color-scheme: dark; --bg:#10151c; --panel:#1a232d; --line:#334150; --text:#f3f6f9; --muted:#aab7c4; --accent:#78e0c1; --warn:#ffd27a; --bad:#ff9d9d; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--text); font:16px/1.45 system-ui,-apple-system,Segoe UI,sans-serif; }
+    .shell { max-width:1000px; margin:auto; padding:24px; }
+    header { display:flex; align-items:center; justify-content:space-between; gap:16px; border-bottom:1px solid var(--line); padding-bottom:18px; }
+    .brand { font-weight:800; letter-spacing:.04em; } .tag { color:var(--muted); font-size:.85rem; }
+    .demo { color:#211900; background:var(--warn); font-weight:800; border-radius:999px; padding:6px 10px; font-size:.75rem; }
+    h1 { font-size:clamp(1.8rem,4vw,2.6rem); line-height:1.1; margin:26px 0 8px; }
+    h2 { margin-top:0; } p { color:var(--muted); }
+    .steps { display:grid; grid-template-columns:repeat(5,1fr); gap:8px; margin:24px 0; }
+    .step { border:1px solid var(--line); border-radius:12px; padding:10px; color:var(--muted); font-size:.82rem; text-align:center; }
+    .step.active { color:var(--text); border-color:var(--accent); background:#1c342f; }
+    .step.done { color:var(--accent); }
+    .panel { background:var(--panel); border:1px solid var(--line); border-radius:18px; padding:clamp(18px,4vw,30px); }
+    .grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; align-items:start; }
+    .preview { width:100%; max-height:420px; object-fit:contain; background:#0c1015; border:1px solid var(--line); border-radius:12px; padding:8px; }
+    .button, button { display:inline-block; border:0; border-radius:10px; padding:13px 18px; font-weight:750; cursor:pointer; background:var(--accent); color:#10221d; font-size:1rem; text-decoration:none; }
+    button.secondary { background:#293744; color:var(--text); border:1px solid var(--line); }
+    button.danger { background:#462a2d; color:#ffe7e7; border:1px solid #754348; }
+    input[type=file] { display:block; width:100%; padding:14px; margin:14px 0; border:1px dashed #627382; border-radius:10px; color:var(--muted); }
+    .notice { border:1px solid #48665e; background:#1c342f; padding:12px 14px; border-radius:10px; margin:16px 0; }
+    .error { border-color:#754348; background:#462a2d; color:#ffe7e7; padding:12px; border-radius:10px; margin:12px 0; }
+    .actions { display:flex; gap:10px; flex-wrap:wrap; margin-top:22px; }
+    .small { font-size:.85rem; }
+    footer { color:var(--muted); font-size:.8rem; margin:24px 0 8px; }
+    @media(max-width:700px) { .shell{padding:16px} .grid{grid-template-columns:1fr} .steps{grid-template-columns:repeat(2,1fr)} header{align-items:flex-start} }
+  </style>
+</head>
+<body>
+<div class="shell">
+  <header>
+    <div><div class="brand">BEACON <span style="color:var(--accent)">/</span> LASER KIOSK</div><div class="tag">Customer workflow prototype</div></div>
+    <span class="demo">DEMO MODE</span>
+  </header>
+  <h1>{% if step == 'welcome' %}Turn your photo into a keepsake.{% elif step == 'upload' %}Choose your photo.{% elif step == 'review' %}Review your engraving preview.{% elif step == 'position' %}Prepare your blank card.{% elif step == 'ready' %}Ready for the demo?{% else %}Your demo transaction is complete.{% endif %}</h1>
+  <p>Prototype of the proposed 720 × 1280 touchscreen experience.</p>
+
+  <div class="steps">
+    {% set labels = [('upload','1 · Photo'),('review','2 · Preview'),('position','3 · Payment'),('ready','4 · Position'),('complete','5 · Finish')] %}
+    {% for key,label in labels %}
+      <div class="step {% if step == key %}active{% elif (key == 'upload' and step in ['review','position','ready','complete']) or (key == 'review' and step in ['position','ready','complete']) or (key == 'position' and step in ['ready','complete']) or (key == 'ready' and step == 'complete') %}done{% endif %}">{{ label }}</div>
+    {% endfor %}
+  </div>
+
+  {% for category, message in get_flashed_messages(with_categories=true) %}
+    <div class="error">{{ message }}</div>
+  {% endfor %}
+  {% if message %}<div class="notice">{{ message }}</div>{% endif %}
+
+  <section class="panel">
+    {% if step == 'welcome' %}
+      <h2>Welcome</h2>
+      <p>Upload a photograph, review the processed preview, and walk through a simulated kiosk transaction.</p>
+      <ul><li>Photo upload and temporary local storage</li><li>Automatic grayscale processing</li><li>Simulated payment and card-position confirmation</li><li>Demo completion without activating equipment</li></ul>
+      <form action="{{ url_for('start') }}" method="post"><button type="submit">Start</button></form>
+    {% elif step in ['upload'] %}
+      <h2>Upload a photograph</h2>
+      <p>Choose a clear photo. Supported formats: JPG, PNG, WEBP, BMP. Maximum size: 12 MB.</p>
+      <form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
+        <input type="file" name="photo" accept="image/png,image/jpeg,image/webp,image/bmp" required>
+        <button type="submit">Upload &amp; process</button>
+      </form>
+    {% elif step == 'review' %}
+      <div class="grid">
+        <div><h2>Original photo</h2><img class="preview" src="{{ url_for('media', kind='uploads', filename=original_file) }}" alt="Uploaded original photo"></div>
+        <div><h2>Grayscale preview</h2><img class="preview" src="{{ url_for('media', kind='processed', filename=processed_file) }}" alt="Processed grayscale preview"></div>
+      </div>
+      <p class="small">This is a basic software preview, not a validated engraving recipe. Final processing settings depend on the supplied plugin, card material, and laser configuration.</p>
+      <div class="actions">
+        <form action="{{ url_for('payment') }}" method="post"><button type="submit">Simulate payment approval</button></form>
+        <form action="{{ url_for('reset') }}" method="post"><button class="secondary" type="submit">Cancel / reset</button></form>
+      </div>
+    {% elif step == 'position' %}
+      <h2>Payment confirmed (simulation)</h2>
+      <p>In the real kiosk, this step must wait for a verified Cantaloupe/MDB payment event before dispensing a blank card.</p>
+      <div class="notice">No payment was taken. No card dispenser is connected.</div>
+      <form action="{{ url_for('position') }}" method="post"><button type="submit">Confirm blank card is positioned</button></form>
+    {% elif step == 'ready' %}
+      <h2>Pre-flight checklist</h2>
+      <ul><li>Photo processed: yes</li><li>Demo payment: approved</li><li>Card position: confirmed by operator</li><li>Physical safety interlocks: not connected or verified</li></ul>
+      <div class="error">Safety boundary: this prototype will not send jobs to EZCAD3 or activate a laser.</div>
+      <form action="{{ url_for('engrave_demo') }}" method="post"><button type="submit">Run software-only completion demo</button></form>
+    {% else %}
+      <h2>Transaction complete</h2>
+      <p>The software-only workflow finished successfully. No engraving, payment, actuator movement, exhaust switching, or card dispensing occurred.</p>
+      <form action="{{ url_for('reset') }}" method="post"><button type="submit">Delete temporary images &amp; start over</button></form>
+    {% endif %}
+  </section>
+  <footer>Local prototype · Demo payment only · No real payment or machine hardware integration · Use the reset button to remove this session's uploaded and processed images.</footer>
+</div>
+</body>
+</html>

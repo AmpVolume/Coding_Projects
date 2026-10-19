@@ -1,0 +1,14 @@
+C:\Users\Duncan Doyon\Desktop\Codeing Projects\Tyler_Technologies\PriorityBudgeting\bin\Debug\net10.0\PriorityBudgeting.exe
+C:\Users\Duncan Doyon\Desktop\Codeing Projects\Tyler_Technologies\PriorityBudgeting\bin\Debug\net10.0\PriorityBudgeting.deps.json
+C:\Users\Duncan Doyon\Desktop\Codeing Projects\Tyler_Technologies\PriorityBudgeting\bin\Debug\net10.0\PriorityBudgeting.runtimeconfig.json
+C:\Users\Duncan Doyon\Desktop\Codeing Projects\Tyler_Technologies\PriorityBudgeting\bin\Debug\net10.0\PriorityBudgeting.dll
+C:\Users\Duncan Doyon\Desktop\Codeing Projects\Tyler_Technologies\PriorityBudgeting\bin\Debug\net10.0\PriorityBudgeting.pdb
+C:\Users\Duncan Doyon\Desktop\Codeing Projects\Tyler_Technologies\PriorityBudgeting\obj\Debug\net10.0\PriorityBudgeting.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Duncan Doyon\Desktop\Codeing Projects\Tyler_Technologies\PriorityBudgeting\obj\Debug\net10.0\PriorityBudgeting.AssemblyInfoInputs.cache
+C:\Users\Duncan Doyon\Desktop\Codeing Projects\Tyler_Technologies\PriorityBudgeting\obj\Debug\net10.0\PriorityBudgeting.AssemblyInfo.cs
+C:\Users\Duncan Doyon\Desktop\Codeing Projects\Tyler_Technologies\PriorityBudgeting\obj\Debug\net10.0\PriorityBudgeting.csproj.CoreCompileInputs.cache
+C:\Users\Duncan Doyon\Desktop\Codeing Projects\Tyler_Technologies\PriorityBudgeting\obj\Debug\net10.0\PriorityBudgeting.dll
+C:\Users\Duncan Doyon\Desktop\Codeing Projects\Tyler_Technologies\PriorityBudgeting\obj\Debug\net10.0\refint\PriorityBudgeting.dll
+C:\Users\Duncan Doyon\Desktop\Codeing Projects\Tyler_Technologies\PriorityBudgeting\obj\Debug\net10.0\PriorityBudgeting.pdb
+C:\Users\Duncan Doyon\Desktop\Codeing Projects\Tyler_Technologies\PriorityBudgeting\obj\Debug\net10.0\PriorityBudgeting.genruntimeconfig.cache
+C:\Users\Duncan Doyon\Desktop\Codeing Projects\Tyler_Technologies\PriorityBudgeting\obj\Debug\net10.0\ref\PriorityBudgeting.dll

@@ -1,0 +1,48 @@
+//Reflction on Phase_2
+====================================================================================================
+1.) Why does Console.ReadLine() return text rather than automatically returning a decimal?
+
+To me the hint is in the word readline. Reading is usually associated to words and letters
+Upon doing futher reaserch it also states that the reason why we can only do strings is because
+ReadLine() can only read raw keyboard inputs and the computer cannot guess
+how to use that data
+
+2.) What could go wrong if someone enters "hello" instead of 400000 for the annual budget?
+
+It will treat the value as 0, because hello dosent have a clear numercal value C# will assume
+$0.00 and this will case the remaining budget to be $-310,000 making it go over budget.
+I noticed this can be a serious issue espessially when turning this into a data base system
+where multiple users can update budget goals and get predicted out comes on specific fincancial
+problems.
+
+3.) Why might decimal.TryParse() be preferable to decimal.Parse() for user input?
+
+My reaserch says that decimal.TryPase() can handle invalid data saftley compared to decimal.Parse()
+While decimal.Prase converts the string to 128-bit decimal data type values but throws exceptions
+on failure.
+
+4.)If the user enters an amount spent greater than the annual budget, how should the program respond?
+
+It should give a warning saying that the program is over budget
+====================================================================================================
+
+1.) Why did you use && instead of || in your if statement?
+
+I used && because I wanted to creat a scenario where both of my annualBudget and amountSpent
+get checked to make sure that both of these values are converting correctly. If one of them
+failed then the logic of an and gate (True == True)  becomes (True == False) this will trigger
+the value warning.
+
+2.) If someone enters -500 as their annual budget, why does your program accept it, 
+and how could you prevent that?
+
+This makes it so -500 get added to the sibtraction of 310,000 becoming 310,500
+What I would do I make is so negitive values get rejected from the annualBudget veriable
+
+3.) If the annual budget is $400,000 and spending is $450,000, 
+what will remainingBudget equal, and why?
+
+the remainingBudget will be -50,000 and the 
+reason is because I have the variable as annual - spending
+
+====================================================================================================
