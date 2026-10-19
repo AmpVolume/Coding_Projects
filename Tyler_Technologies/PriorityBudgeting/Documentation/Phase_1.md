@@ -1,5 +1,4 @@
-﻿
-string programName = "Road Maintenance";
+﻿string programName = "Road Maintenance";
 
 decimal annualBudget = 250000m;
 decimal amountSpent = 180000m;
